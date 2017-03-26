@@ -1,0 +1,103 @@
+<div class="card-tabs">
+  <ul class="tabs tabs-fixed-width">
+    <li class="tab"><a class="active" href="#All">All</a></li>
+    <li class="tab"><a href="#Online">Online</a></li>
+    <li class="tab"><a href="#Offline">Offline</a></li>
+    <li class="tab"><a href="#Unregistered">Unregistered</a></li>
+  </ul>
+</div>
+
+<div class="card-content grey lighten-4" id="All">
+  <div class="row">
+    <div class="col s12 m6 l3" *ngFor="let user of userData | search: term">
+      <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{user.logo}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{user.display_name}}
+          <i class="material-icons right">more_vert</i></span>
+          <span><a href="{{user.channel.url}}">Go to Channel</a>
+          <i  *ngIf="user.stream.stream !== null" class="material-icons right" style="color: green">settings_input_antenna</i></span>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{user.display_name}}<i class="material-icons right">close</i></span>
+          <p>{{user.bio}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-content grey lighten-3" id="Unregistered">
+  <div class="row">
+    <div class="col s12 m6 l3" *ngFor="let error of errors">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img src="./assets/images/default-avatar.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{error.message}}</span>
+          <p><a href="https://www.twitch.tv/">Find more channels on Twitch tv</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-content grey lighten-4" id="Online">
+  <div class="row">
+    <div class="col s12 m6 l3" *ngFor="let user of online | search: term">
+      <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{user.logo}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{user.display_name}}
+          <i class="material-icons right">more_vert</i></span>
+          <span><a href="{{user.channel.url}}">Go to Channel</a><i class="material-icons right" style="color: green">settings_input_antenna</i></span>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{user.display_name}}<i class="material-icons right">close</i></span>
+          <h5><span style="font-weight: bold">Game: {{user.channel.game}}</span></h5>
+          <p><span style="font-weight: bold">Followers:</span> {{user.channel.followers}}</p>
+          <p><span style="font-weight: bold">Viewers:</span> {{user.stream.viewers}}</p>
+          <p>{{user.bio}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-content grey lighten-4" id="Offline">
+  <div class="row">
+    <div class="col s12 m6 l3" *ngFor="let user of offline | search: term">
+      <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{user.logo}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{user.display_name}}<i class="material-icons right">more_vert</i></span>
+          <p><a href="{{user.channel.url}}">Go to Channel</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{user.display_name}}<i class="material-icons right">close</i></span>
+          <p>{{user.bio}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l12 s12">
+        <h5 class="white-text center-align">This project was built for
+          <a style="font-weight: lighter; color: #ffd740" href="https://www.freecodecamp.com/challenges/use-the-twitchtv-json-api">Free Code Camp</a></h5>
+        <p class="grey-text text-lighten-4 center-align">It was created using Angular2, Materialize componenets and served thanks to GitHub Pages.</p>
+        <p class="center-align"><a style="font-weight: lighter; color: #ffd740" href="http://fabiolavieyra.com/">fabiolavieyra.com</a></p>
+      </div>
+    </div>
+  </div>
+</footer>

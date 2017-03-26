@@ -1,0 +1,17 @@
+<div class="logo">
+  <img src="./assets/images/Twitch_Purple_RGB.png" alt="twitc.logo">
+</div>
+
+<form class="col s8 m8">
+  <div class="row">
+    <div class="col input-field s8 m8 offset-s2">
+      <i class="material-icons prefix">search</i>
+      <input #input id="icon_prefix"
+        type="text"
+        class="validate"
+        placeholder="Search for a user name"
+        (input)="update.emit(input.value)">
+      <label for="icon_prefix" class="active"></label>
+    </div>
+  </div>
+</form>
